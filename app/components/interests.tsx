@@ -1,6 +1,6 @@
 const interests = [
   { title: 'ai', blurb: 'agents, tooling & building with LLMs' },
-  { title: 'startups', blurb: 'shipping products & chasing big ideas' },
+  { title: 'startups', blurb: "cos, y'know, cutting-edge solutions ¯\\_(ツ)_/¯" },
   { title: 'web3', blurb: 'onchain apps & decentralized tech' },
   { title: 'game dev', blurb: 'interactive worlds & real-time systems' },
   { title: 'crypto', blurb: 'markets, protocols & the open economy' },
