@@ -4,7 +4,7 @@ const interests = [
   { title: 'web3', blurb: 'onchain apps & decentralized tech' },
   { title: 'game dev', blurb: 'interactive worlds & real-time systems' },
   { title: 'crypto', blurb: 'markets, protocols & the open economy' },
-  { title: 'wellness', blurb: 'biohacking & optimizing the human stack' },
+  { title: 'wellness', blurb: 'biohacking & optimizing the human stack #bryanjohnson' },
 ]
 
 export function Interests() {
