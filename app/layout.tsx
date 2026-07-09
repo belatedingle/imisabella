@@ -6,6 +6,7 @@ import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
+import { Cursor } from './components/cursor'
 
 const jetbrainsMono = JetBrains_Mono({
   weight: ['700', '800'],
@@ -68,6 +69,7 @@ export default function RootLayout({
       )}
     >
       <body className="antialiased font-sans">
+        <Cursor />
         {children}
         <Analytics />
         <SpeedInsights />

@@ -118,6 +118,48 @@ body {
   }
 }
 
+/* ---------- Custom glyph cursor ---------- */
+.cursor-none,
+.cursor-none * {
+  cursor: none !important;
+}
+.cursor-block {
+  top: 0;
+  left: 0;
+  color: var(--color-pink);
+  font-size: 1.1rem;
+  line-height: 1;
+  mix-blend-mode: difference;
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.cursor-block-inner {
+  display: inline-block;
+  animation: blink 1.1s steps(1) infinite;
+}
+.cursor-glyph {
+  color: var(--color-pink);
+  transform: translate(-50%, -50%);
+  animation: glyph-fade 0.65s forwards;
+  will-change: opacity, transform;
+}
+@keyframes glyph-fade {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 10px)) scale(0.6);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-none,
+  .cursor-none * {
+    cursor: auto !important;
+  }
+}
+
 /* ---------- Borders / interaction ---------- */
 
 .ink-border {
