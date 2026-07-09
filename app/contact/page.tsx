@@ -8,23 +8,23 @@ export const metadata: Metadata = {
 const socials = [
   {
     name: 'instagram',
-    handle: '@isabella',
-    href: 'https://instagram.com/',
+    handle: '@coolstuffbybella',
+    href: 'https://www.instagram.com/coolstuffbybella/',
   },
   {
     name: 'x',
-    handle: '@isabella',
-    href: 'https://x.com/',
+    handle: '@coolstuffwbella',
+    href: 'https://x.com/coolstuffwbella',
   },
   {
     name: 'linkedin',
-    handle: 'isabella',
-    href: 'https://linkedin.com/in/',
+    handle: 'imisabella',
+    href: 'https://www.linkedin.com/in/imisabella/',
   },
   {
     name: 'github',
-    handle: 'isabella',
-    href: 'https://github.com/',
+    handle: 'belatedingle',
+    href: 'https://github.com/belatedingle',
   },
 ]
 
