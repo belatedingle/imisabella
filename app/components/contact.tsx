@@ -7,44 +7,40 @@ const socials = [
 
 export function Contact() {
   return (
-    <footer id="contact" className="border-t-2 border-ink bg-ink text-paper">
-      <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-8 md:py-24">
-        <p className="label text-pink">( contact )</p>
-        <h2 className="display mt-4 text-[15vw] leading-[0.82] md:text-[11vw]">
-          Let&apos;s
+    <footer id="contact" className="border-t border-ink/10 bg-ink text-paper">
+      <div className="mx-auto max-w-5xl px-5 py-20 md:px-8 md:py-28">
+        <p className="label text-pink">Contact</p>
+        <h2 className="display mt-6 text-6xl leading-[0.9] md:text-8xl">
+          Let&apos;s make
           <br />
-          <span
-            className="text-transparent"
-            style={{ WebkitTextStroke: '2px var(--color-paper)' }}
-          >
-            make it
-          </span>{' '}
-          weird
+          something good
         </h2>
 
-        <div className="mt-12 grid gap-px overflow-hidden border-2 border-paper/30 bg-paper/20 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 border-t border-paper/15">
           {socials.map((s) => (
             <a
               key={s.label}
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col gap-1 bg-ink p-6 transition-colors hover:bg-pink"
+              className="group flex items-center justify-between border-b border-paper/15 py-5 transition-colors hover:text-pink"
             >
-              <span className="label text-paper/50 group-hover:text-paper">
+              <span className="label text-paper/50 transition-colors group-hover:text-pink">
                 {s.label}
               </span>
-              <span className="text-lg font-semibold">{s.handle}</span>
-              <span className="mt-2 inline-block transition-transform group-hover:translate-x-1">
-                ↗
+              <span className="flex items-center gap-3 text-lg">
+                {s.handle}
+                <span className="inline-block transition-transform group-hover:translate-x-1">
+                  ↗
+                </span>
               </span>
             </a>
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-paper/20 pt-6 label text-paper/50 sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} Isabella — built with too much coffee</span>
-          <span>Brooklyn, NY · 40.6°N</span>
+        <div className="mt-12 flex flex-col gap-2 label text-paper/40 sm:flex-row sm:items-center sm:justify-between">
+          <span>© {new Date().getFullYear()} Isabella</span>
+          <span>Brooklyn, NY</span>
         </div>
       </div>
     </footer>

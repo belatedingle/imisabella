@@ -62,21 +62,17 @@ export function WorkIndex() {
               href={p.href}
               onMouseEnter={() => setActive(idx)}
               onMouseLeave={() => setActive(null)}
-              className="group grid grid-cols-[auto_1fr_auto] items-center gap-4 border-b-2 border-ink py-5 transition-colors hover:bg-ink md:gap-8 md:py-7"
+              className="group grid grid-cols-[auto_1fr_auto] items-center gap-4 border-b border-ink/10 py-6 md:gap-8 md:py-8"
             >
-              <span className="label text-ink/50 transition-colors group-hover:text-paper/60">
-                0{idx + 1}
-              </span>
-              <span className="display text-4xl leading-none transition-colors group-hover:text-paper md:text-6xl">
+              <span className="label text-muted">0{idx + 1}</span>
+              <span className="display text-4xl leading-none transition-colors group-hover:text-pink md:text-6xl">
                 {p.title}
               </span>
               <span className="flex flex-col items-end text-right">
-                <span className="text-sm font-medium transition-colors group-hover:text-paper md:text-base">
+                <span className="text-sm text-ink/70 md:text-base">
                   {p.role}
                 </span>
-                <span className="label text-ink/50 transition-colors group-hover:text-paper/60">
-                  {p.year}
-                </span>
+                <span className="label text-muted">{p.year}</span>
               </span>
             </a>
           </li>

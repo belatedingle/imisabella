@@ -9,16 +9,14 @@ const facts = [
 
 export function About() {
   return (
-    <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16">
+    <div className="grid gap-12 md:grid-cols-[1.5fr_1fr] md:gap-16">
       <div>
-        <p className="label mb-6 text-pink">( about )</p>
-        <p className="text-balance text-3xl font-medium leading-[1.15] md:text-5xl">
+        <p className="text-balance text-2xl font-medium leading-[1.25] md:text-4xl">
           I build at the seam where{' '}
-          <span className="text-pink">design</span>,{' '}
-          <span className="italic">code</span>, and slightly-too-online
-          curiosity collide.
+          <span className="text-pink">design</span>, code, and
+          slightly-too-online curiosity collide.
         </p>
-        <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink/80">
+        <p className="mt-8 max-w-xl leading-relaxed text-ink/70">
           Currently a final-year student and startup founder. I&apos;ve shipped
           products used by tens of thousands, contribute to open source, and
           spend my off-hours on wellness experiments and reading way too many
@@ -26,18 +24,18 @@ export function About() {
           that feel alive.
         </p>
 
-        <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden border-2 border-ink bg-ink sm:grid-cols-4">
+        <dl className="mt-10 divide-y divide-ink/10 border-t border-ink/10">
           {facts.map(([k, v]) => (
-            <div key={k} className="bg-paper p-4">
-              <dt className="label text-ink/50">{k}</dt>
-              <dd className="mt-1 font-semibold">{v}</dd>
+            <div key={k} className="flex items-baseline justify-between py-3">
+              <dt className="label text-muted">{k}</dt>
+              <dd className="text-sm font-medium">{v}</dd>
             </div>
           ))}
         </dl>
       </div>
 
-      <div className="relative">
-        <div className="ink-border overflow-hidden bg-blush">
+      <div>
+        <div className="overflow-hidden bg-blush">
           <Image
             src="/images/portrait.png"
             alt="Portrait of Isabella"
@@ -46,9 +44,7 @@ export function About() {
             className="h-full w-full object-cover"
           />
         </div>
-        <span className="absolute -bottom-4 -left-4 ink-border bg-acid px-3 py-1.5 label font-bold rotate-[-4deg]">
-          est. online since &apos;09
-        </span>
+        <p className="mt-3 label text-muted">Online since &apos;09</p>
       </div>
     </div>
   )

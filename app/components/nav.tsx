@@ -9,18 +9,18 @@ const links = [
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b-2 border-ink bg-paper/85 backdrop-blur">
-      <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-3 md:px-8">
-        <Link href="/" className="label font-bold tracking-[0.25em] text-ink">
-          ISABELLA<span className="text-pink">®</span>
+    <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/80 backdrop-blur">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4 md:px-8">
+        <Link href="/" className="label tracking-[0.25em] text-ink">
+          ISABELLA
         </Link>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="link-sweep label text-ink"
+              className="link-sweep label text-muted transition-colors hover:text-ink"
             >
               {l.label}
             </Link>
@@ -29,9 +29,9 @@ export function Nav() {
 
         <a
           href="#contact"
-          className="hover-lift ink-border bg-pink px-3 py-1.5 label font-bold text-paper"
+          className="link-sweep label text-ink"
         >
-          Let&apos;s talk ↗
+          Contact
         </a>
       </nav>
     </header>

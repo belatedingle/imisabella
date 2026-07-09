@@ -19,43 +19,34 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden px-5 pb-10 pt-14 md:px-8 md:pt-20">
-      <div className="mx-auto max-w-[1400px]">
-        <div className="mb-6 flex flex-wrap items-center gap-x-6 gap-y-2">
-          <span className="label text-ink/60">Based in Brooklyn</span>
-          <span className="label text-ink/60">Available — Spring &apos;26</span>
-          <span className="flex items-center gap-2 label text-ink/60">
-            <span className="inline-block h-2 w-2 rounded-full bg-pink" />
-            Open to collabs
-          </span>
+    <section className="px-5 pb-16 pt-20 md:px-8 md:pb-24 md:pt-32">
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-10 flex items-center gap-2 label text-muted">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-pink" />
+          Brooklyn, NY — open to collaborations
         </div>
 
-        <h1 className="display text-[19vw] leading-[0.8] md:text-[15vw]">
+        <h1 className="display text-[16vw] leading-[0.85] md:text-[9rem]">
           <span className="block">Isabella</span>
-          <span className="block text-outline">Builds</span>
+          <span className="block text-muted">Builds</span>
         </h1>
 
-        <div className="mt-6 flex flex-col gap-6 border-t-2 border-ink pt-6 md:flex-row md:items-end md:justify-between">
-          <p className="max-w-xl text-pretty text-lg leading-relaxed md:text-xl">
+        <div className="mt-12 flex flex-col gap-8 border-t border-ink/10 pt-8 md:flex-row md:items-end md:justify-between">
+          <p className="max-w-lg text-pretty text-lg leading-relaxed text-ink/80">
             I&apos;m a{' '}
             <span className="relative inline-grid h-[1.3em] overflow-hidden align-bottom">
-              <span
-                key={i}
-                className="font-semibold text-pink"
-                style={{ animation: 'blink 0s' }}
-              >
+              <span key={i} className="text-pink">
                 {roles[i]}
               </span>
             </span>{' '}
-            turning half-baked ideas into things people actually use — on the
-            web, in the terminal, and everywhere in between.
+            turning half-baked ideas into things people actually use.
           </p>
 
           <a
             href="#work"
-            className="label group flex shrink-0 items-center gap-3 text-ink"
+            className="label group flex shrink-0 items-center gap-3 text-muted transition-colors hover:text-ink"
           >
-            <span className="link-sweep">Scroll to explore</span>
+            <span>Selected work</span>
             <span className="inline-block transition-transform group-hover:translate-y-1">
               ↓
             </span>

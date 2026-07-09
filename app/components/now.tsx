@@ -23,15 +23,12 @@ const cards = [
 
 export function Now() {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
       {cards.map((c) => (
-        <div
-          key={c.title}
-          className="hover-lift ink-border flex flex-col bg-paper p-5"
-        >
+        <div key={c.title} className="flex flex-col border-t border-ink/10 pt-4">
           <span className="label text-pink">{c.tag}</span>
-          <h3 className="mt-3 text-xl font-bold leading-tight">{c.title}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-ink/75">{c.body}</p>
+          <h3 className="mt-3 text-lg font-medium leading-tight">{c.title}</h3>
+          <p className="mt-2 text-sm leading-relaxed text-ink/60">{c.body}</p>
         </div>
       ))}
     </div>

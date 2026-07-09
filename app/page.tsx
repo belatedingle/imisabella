@@ -1,6 +1,5 @@
 import { Nav } from './components/nav'
 import { Hero } from './components/hero'
-import { Marquee } from './components/marquee'
 import { WorkIndex } from './components/work-index'
 import { About } from './components/about'
 import { Now } from './components/now'
@@ -10,9 +9,9 @@ import { Reveal } from './components/reveal'
 
 function SectionLabel({ n, text }: { n: string; text: string }) {
   return (
-    <div className="mb-8 flex items-baseline justify-between border-b-2 border-ink pb-3">
-      <h2 className="display text-3xl md:text-5xl">{text}</h2>
-      <span className="label text-ink/50">{n}</span>
+    <div className="mb-12 flex items-baseline justify-between border-t border-ink/10 pt-4">
+      <span className="label text-muted">{n}</span>
+      <h2 className="label text-ink">{text}</h2>
     </div>
   )
 }
@@ -23,18 +22,7 @@ export default function Page() {
       <Nav />
       <Hero />
 
-      <Marquee
-        items={[
-          'Design engineering',
-          'Web3 & AI',
-          'Open source',
-          'Founder mode',
-          'Wellness nerd',
-        ]}
-        className="border-y-2 border-ink bg-pink py-3 text-paper"
-      />
-
-      <div className="mx-auto max-w-[1400px] space-y-24 px-5 py-20 md:px-8 md:py-28">
+      <div className="mx-auto max-w-5xl space-y-28 px-5 py-16 md:px-8 md:py-24">
         <section id="work">
           <SectionLabel n="01 — selected work" text="Work" />
           <WorkIndex />
