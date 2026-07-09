@@ -4,25 +4,25 @@
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  --color-paper: #f3efe4;
-  --color-paper-dark: #e7e1d2;
-  --color-ink: #14110f;
-  --color-cobalt: #2438ff;
-  --color-acid: #d8ff33;
-  --color-coral: #ff4d2e;
+  --color-paper: #fdeef4;
+  --color-paper-dark: #f7dbe8;
+  --color-ink: #1a0f14;
+  --color-cobalt: #ff2d8b;
+  --color-acid: #ffe14d;
+  --color-coral: #ff6b3d;
 }
 
 :root {
   --background: var(--color-paper);
   --foreground: var(--color-ink);
 
-  --sh-class: #2438ff;
-  --sh-identifier: #14110f;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #ff4d2e;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #2438ff;
+  --sh-class: #ff2d8b;
+  --sh-identifier: #1a0f14;
+  --sh-sign: #b3899b;
+  --sh-string: #c2185b;
+  --sh-keyword: #ff6b3d;
+  --sh-comment: #b39aa4;
+  --sh-jsxliterals: #ff2d8b;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
 }
