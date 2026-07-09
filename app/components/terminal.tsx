@@ -33,7 +33,80 @@ function Out({ children }: { children: ReactNode }) {
 }
 
 function Amber({ children }: { children: ReactNode }) {
-  return <span className="text-[#ff2d8b]">{children}</span>
+  return (
+    <span style={{ color: 'var(--term-accent)' }}>{children}</span>
+  )
+}
+
+const THEMES: Record<string, string> = {
+  pink: '#ff2d8b',
+  green: '#33ff9b',
+  amber: '#ffb642',
+  blue: '#7fd4ff',
+}
+
+// Falling-glyph matrix overlay. Press Escape to exit.
+function MatrixRain({ onExit }: { onExit: () => void }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let raf = 0
+    const chars = 'アイウエオカキクケコｱｲｳ0123456789<>/*-+={}'.split('')
+    let cols = 0
+    let drops: number[] = []
+    const fontSize = 16
+
+    function resize() {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      cols = Math.floor(canvas.width / fontSize)
+      drops = Array(cols).fill(1)
+    }
+    resize()
+    window.addEventListener('resize', resize)
+
+    function draw() {
+      ctx.fillStyle = 'rgba(5,8,6,0.08)'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.fillStyle = '#33ff9b'
+      ctx.font = `${fontSize}px monospace`
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)]
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize)
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0
+        }
+        drops[i]++
+      }
+      raf = requestAnimationFrame(draw)
+    }
+    draw()
+
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') onExit()
+    }
+    window.addEventListener('keydown', onKey)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('resize', resize)
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [onExit])
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black" onClick={onExit}>
+      <canvas ref={canvasRef} className="h-full w-full" />
+      <span className="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full border border-[#33ff9b]/40 bg-black/60 px-4 py-2 font-mono text-xs text-[#33ff9b]">
+        press ESC or tap to exit
+      </span>
+    </div>
+  )
 }
 
 function Ext({ href, children }: { href: string; children: ReactNode }) {
@@ -54,6 +127,8 @@ export function Terminal() {
   const [input, setInput] = useState('')
   const [history, setHistory] = useState<string[]>([])
   const [hIndex, setHIndex] = useState(-1)
+  const [accent, setAccent] = useState('#ff2d8b')
+  const [matrix, setMatrix] = useState(false)
   const idRef = useRef(0)
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -84,6 +159,41 @@ export function Terminal() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight })
   }, [lines])
 
+  // Konami code → secret rainbow mode
+  useEffect(() => {
+    const seq = [
+      'ArrowUp',
+      'ArrowUp',
+      'ArrowDown',
+      'ArrowDown',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowLeft',
+      'ArrowRight',
+      'b',
+      'a',
+    ]
+    let pos = 0
+    function onKey(e: KeyboardEvent) {
+      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key
+      pos = key === seq[pos] ? pos + 1 : key === seq[0] ? 1 : 0
+      if (pos === seq.length) {
+        pos = 0
+        setAccent('#33ff9b')
+        document.documentElement.classList.add('konami')
+        push(
+          <Out>
+            <Amber>
+              ↑↑↓↓←→←→ba — cheat code accepted. welcome to god mode.
+            </Amber>
+          </Out>,
+        )
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
   function run(raw: string) {
     const cmd = raw.trim()
     // echo the prompt line
@@ -112,6 +222,9 @@ export function Terminal() {
               ['contact', 'ways to reach me'],
               ['writing', 'go to the blog'],
               ['neofetch', 'system info'],
+              ['theme <c>', 'recolor: pink/green/amber/blue'],
+              ['matrix', 'follow the white rabbit'],
+              ['cowsay <t>', 'ask the cow'],
               ['clear', 'clear the screen'],
             ].map(([c, d]) => (
               <div key={c}>
@@ -292,6 +405,96 @@ building things and shipping most weekends.`}
         }
         break
 
+      case 'theme':
+        {
+          const t = arg.toLowerCase()
+          if (THEMES[t]) {
+            setAccent(THEMES[t])
+            push(
+              <Out>
+                theme set to <Amber>{t}</Amber> phosphor.
+              </Out>,
+            )
+          } else {
+            push(
+              <Out>
+                usage: theme &lt;pink|green|amber|blue&gt;
+              </Out>,
+            )
+          }
+        }
+        break
+
+      case 'matrix':
+        setMatrix(true)
+        push(
+          <Out>
+            <span className="text-white/50">wake up, neo… (ESC to exit)</span>
+          </Out>,
+        )
+        break
+
+      case 'cowsay':
+        {
+          const msg = arg || 'moo'
+          const top = ' ' + '_'.repeat(msg.length + 2)
+          const bottom = ' ' + '-'.repeat(msg.length + 2)
+          push(
+            <Out>
+              {`${top}
+< ${msg} >
+${bottom}
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||`}
+            </Out>,
+          )
+        }
+        break
+
+      case 'history':
+        push(
+          <Out>
+            {history.length ? (
+              history.map((h, i) => (
+                <div key={i}>
+                  <span className="text-white/40">{String(i + 1).padStart(3)}</span>{' '}
+                  {h}
+                </div>
+              ))
+            ) : (
+              <span className="text-white/50">no history yet</span>
+            )}
+          </Out>,
+        )
+        break
+
+      case 'vim':
+      case 'nano':
+      case 'emacs':
+        push(
+          <Out>
+            {name} launched.{' '}
+            <span className="text-white/50">
+              (just kidding — nobody escapes {name} that easily. you&apos;re
+              stuck here forever now.)
+            </span>
+          </Out>,
+        )
+        break
+
+      case 'exit':
+        push(
+          <Out>
+            <span className="text-white/50">
+              there is no escape. this is your home now. ♥
+            </span>
+          </Out>,
+        )
+        break
+
       case 'clear':
         setLines([])
         break
@@ -347,6 +550,10 @@ building things and shipping most weekends.`}
         'writing',
         'neofetch',
         'date',
+        'theme',
+        'matrix',
+        'cowsay',
+        'history',
         'clear',
       ]
       const match = all.find((c) => c.startsWith(input.trim()))
@@ -360,8 +567,10 @@ building things and shipping most weekends.`}
   return (
     <div
       className="crt flex h-[70vh] max-h-[640px] w-full flex-col overflow-hidden rounded-xl border border-white/10 bg-[#0d0d10] font-mono text-sm text-white/90 shadow-2xl"
+      style={{ ['--term-accent' as string]: accent }}
       onClick={() => inputRef.current?.focus()}
     >
+      {matrix && <MatrixRain onExit={() => setMatrix(false)} />}
       {/* Title bar */}
       <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-2.5">
         <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
@@ -397,7 +606,8 @@ building things and shipping most weekends.`}
               spellCheck={false}
               autoComplete="off"
               aria-label="terminal input"
-              className="w-full bg-transparent text-white/90 caret-[#ff2d8b] outline-none"
+              style={{ caretColor: accent }}
+              className="w-full bg-transparent text-white/90 outline-none"
             />
           </div>
         </div>
