@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export async function generateMetadata({ params }) {
+  let { slug } = await params
+  let post = getBlogPosts().find((post) => post.slug === slug)
   if (!post) {
     return
   }
@@ -59,7 +60,7 @@ export default function Blog({ params }) {
   }
 
   return (
-    <section>
+    <section className="reading px-4 py-16 md:py-20">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -82,11 +83,11 @@ export default function Blog({ params }) {
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
+      <h1 className="title text-4xl font-bold tracking-tight md:text-5xl">
         {post.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+      <div className="mt-4 mb-8 flex items-center">
+        <p className="font-mono text-xs uppercase tracking-widest text-ink/60">
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>

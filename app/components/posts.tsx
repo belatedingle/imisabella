@@ -5,7 +5,7 @@ export function BlogPosts() {
   let allBlogs = getBlogPosts()
 
   return (
-    <div>
+    <div className="brutal-border divide-y-2 divide-ink bg-paper">
       {allBlogs
         .sort((a, b) => {
           if (
@@ -18,17 +18,18 @@ export function BlogPosts() {
         .map((post) => (
           <Link
             key={post.slug}
-            className="flex flex-col space-y-1 mb-4"
+            className="group flex flex-col gap-1 px-4 py-4 transition-colors hover:bg-acid md:flex-row md:items-center md:gap-4"
             href={`/blog/${post.slug}`}
           >
-            <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-              <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
-                {formatDate(post.metadata.publishedAt, false)}
-              </p>
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.title}
-              </p>
-            </div>
+            <p className="font-mono text-xs uppercase tracking-widest text-ink/60 md:w-[110px] tabular-nums">
+              {formatDate(post.metadata.publishedAt, false)}
+            </p>
+            <p className="text-lg font-bold tracking-tight">
+              {post.metadata.title}
+            </p>
+            <span className="ml-auto hidden font-mono text-ink/40 transition-transform group-hover:translate-x-1 group-hover:text-ink md:block">
+              →
+            </span>
           </Link>
         ))}
     </div>

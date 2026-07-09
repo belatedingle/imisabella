@@ -1,20 +1,36 @@
-import { BlogPosts } from 'app/components/posts'
+import { Hero } from './components/hero'
+import { Marquee } from './components/marquee'
+import { About } from './components/about'
+import { Now } from './components/now'
+import { Projects } from './components/projects'
+import { Writing } from './components/writing'
+import { Contact } from './components/contact'
 
 export default function Page() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        hi, i’m isabella
-      </h1>
-      
-      <p className="mb-4">
-        {`final year of high school, startup founder, web3/ai evangelist, exploring the crypto space, wellness + biohacker #bryanjohnson`}
-      </p>
+    <>
+      <Hero />
 
-      <div className="my-8">
-        <h2 className="mb-4 text-xl font-semibold">writing</h2>
-        <BlogPosts />
+      <div className="border-b-2 border-ink bg-cobalt py-3 text-paper">
+        <Marquee
+          items={[
+            'web3',
+            'ai agents',
+            'startups',
+            'crypto',
+            'biohacking',
+            'longevity',
+            'building in public',
+            'shipping',
+          ]}
+        />
       </div>
-    </section>
+
+      <About />
+      <Now />
+      <Projects />
+      <Writing />
+      <Contact />
+    </>
   )
 }

@@ -1,6 +1,6 @@
 import './global.css'
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
+import { Space_Grotesk } from 'next/font/google'
 import { GeistMono } from 'geist/font/mono'
 import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
@@ -8,18 +8,26 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'isabella — founder, builder, web3/ai',
+    template: '%s | isabella',
   },
-  description: 'This is my portfolio.',
+  description:
+    'Isabella — final-year student, startup founder, web3/AI evangelist, wellness + biohacker. A very online personal site.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'isabella',
+    description:
+      'Founder, builder, web3/AI evangelist, wellness + biohacker.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'isabella',
     locale: 'en_US',
     type: 'website',
   },
@@ -36,7 +44,13 @@ export const metadata: Metadata = {
   },
 }
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
+export const viewport = {
+  themeColor: '#f3efe4',
+  colorScheme: 'light',
+}
+
+const cx = (...classes: (string | false | undefined)[]) =>
+  classes.filter(Boolean).join(' ')
 
 export default function RootLayout({
   children,
@@ -47,19 +61,17 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
-        GeistSans.variable,
+        'bg-paper text-ink',
+        spaceGrotesk.variable,
         GeistMono.variable
       )}
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <Navbar />
-          {children}
-          <Footer />
-          <Analytics />
-          <SpeedInsights />
-        </main>
+      <body className="antialiased font-sans selection:bg-cobalt">
+        <Navbar />
+        <main className="flex-auto min-w-0 flex flex-col">{children}</main>
+        <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
