@@ -10,16 +10,12 @@ export default function Page() {
     <section className="reading px-4 py-16 md:py-20">
       <a
         href="/"
-        className="mb-8 inline-block font-mono text-xs uppercase tracking-widest text-cobalt underline underline-offset-2"
+        className="mb-8 inline-block label text-pink underline underline-offset-2"
       >
         ← isabella.dev
       </a>
-      <p className="mb-3 font-mono text-xs uppercase tracking-widest text-cobalt">
-        [ words ]
-      </p>
-      <h1 className="mb-10 text-4xl font-bold uppercase tracking-tight md:text-6xl">
-        my blog
-      </h1>
+      <p className="mb-3 label text-pink">[ words ]</p>
+      <h1 className="display mb-10 text-5xl md:text-7xl">Words</h1>
       <BlogPosts />
     </section>
   )

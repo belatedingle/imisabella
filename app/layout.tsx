@@ -1,39 +1,33 @@
 import './global.css'
 import type { Metadata } from 'next'
-import { Pirata_One, VT323 } from 'next/font/google'
+import { Anton } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
 
-const pirata = Pirata_One({
+const anton = Anton({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
 })
 
-const vt323 = VT323({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-pixel',
-  display: 'swap',
-})
-
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: '❀ isabella ❀',
-    template: '%s | isabella',
+    default: 'Isabella — creative developer',
+    template: '%s | Isabella',
   },
   description:
-    'Isabella — final-year student, startup founder, web3/AI evangelist, wellness + biohacker. A very online personal homepage.',
+    'Isabella — creative developer, startup founder, and very-online builder working at the edge of web, AI, and design.',
   openGraph: {
-    title: '❀ isabella ❀',
+    title: 'Isabella — creative developer',
     description:
-      'Founder, builder, web3/AI evangelist, wellness + biohacker.',
+      'Creative developer, founder, and builder working at the edge of web, AI, and design.',
     url: baseUrl,
-    siteName: 'isabella',
+    siteName: 'Isabella',
     locale: 'en_US',
     type: 'website',
   },
@@ -51,7 +45,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport = {
-  themeColor: '#fdeef4',
+  themeColor: '#f5f2ec',
   colorScheme: 'light',
 }
 
@@ -68,12 +62,12 @@ export default function RootLayout({
       lang="en"
       className={cx(
         'bg-paper text-ink',
-        pirata.variable,
-        vt323.variable,
+        anton.variable,
+        GeistSans.variable,
         GeistMono.variable
       )}
     >
-      <body className="antialiased font-mono">
+      <body className="antialiased font-sans">
         {children}
         <Analytics />
         <SpeedInsights />

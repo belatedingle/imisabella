@@ -1,56 +1,68 @@
-import { Sidebar } from './components/sidebar'
-import { Ticker } from './components/ticker'
-import { StatusBar } from './components/statusbar'
-import { Intro } from './components/intro'
-import { FeedGrid } from './components/feed-grid'
-import { ProjectsGrid } from './components/projects-grid'
-import { NowStrip } from './components/now-strip'
-import { Guestbook } from './components/guestbook'
-import { SectionHeading } from './components/section-heading'
+import { Nav } from './components/nav'
+import { Hero } from './components/hero'
+import { Marquee } from './components/marquee'
+import { WorkIndex } from './components/work-index'
+import { About } from './components/about'
+import { Now } from './components/now'
+import { BlogPosts } from './components/posts'
+import { Contact } from './components/contact'
 import { Reveal } from './components/reveal'
+
+function SectionLabel({ n, text }: { n: string; text: string }) {
+  return (
+    <div className="mb-8 flex items-baseline justify-between border-b-2 border-ink pb-3">
+      <h2 className="display text-3xl md:text-5xl">{text}</h2>
+      <span className="label text-ink/50">{n}</span>
+    </div>
+  )
+}
 
 export default function Page() {
   return (
-    <div className="bg-paper-tex min-h-screen lg:flex">
-      <Sidebar />
+    <main className="min-h-screen">
+      <Nav />
+      <Hero />
 
-      <div className="min-w-0 flex-1 pb-12">
-        <Ticker />
+      <Marquee
+        items={[
+          'Design engineering',
+          'Web3 & AI',
+          'Open source',
+          'Founder mode',
+          'Wellness nerd',
+        ]}
+        className="border-y-2 border-ink bg-pink py-3 text-paper"
+      />
 
-        <Intro />
+      <div className="mx-auto max-w-[1400px] space-y-24 px-5 py-20 md:px-8 md:py-28">
+        <section id="work">
+          <SectionLabel n="01 — selected work" text="Work" />
+          <WorkIndex />
+        </section>
 
-        <div className="space-y-12 px-5 py-10 md:px-8">
-          <section>
-            <SectionHeading text="articles & posts" id="writing" />
-            <Reveal>
-              <FeedGrid />
-            </Reveal>
-          </section>
+        <section id="about">
+          <SectionLabel n="02 — the human" text="About" />
+          <Reveal>
+            <About />
+          </Reveal>
+        </section>
 
-          <section>
-            <SectionHeading text="projects" id="projects" />
-            <Reveal>
-              <ProjectsGrid />
-            </Reveal>
-          </section>
+        <section id="now">
+          <SectionLabel n="03 — right now" text="Now" />
+          <Reveal>
+            <Now />
+          </Reveal>
+        </section>
 
-          <section>
-            <SectionHeading text="now" id="now" />
-            <Reveal>
-              <NowStrip />
-            </Reveal>
-          </section>
-
-          <section>
-            <SectionHeading text="guestbook" id="contact" />
-            <Reveal>
-              <Guestbook />
-            </Reveal>
-          </section>
-        </div>
+        <section id="words">
+          <SectionLabel n="04 — writing" text="Words" />
+          <Reveal>
+            <BlogPosts />
+          </Reveal>
+        </section>
       </div>
 
-      <StatusBar />
-    </div>
+      <Contact />
+    </main>
   )
 }

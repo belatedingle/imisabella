@@ -24,7 +24,7 @@ export function Marquee({
             aria-hidden={i >= items.length}
           >
             {item}
-            <span className="text-cobalt">✦</span>
+            <span className="text-paper/70">✦</span>
           </span>
         ))}
       </div>

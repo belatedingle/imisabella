@@ -5,7 +5,7 @@ export function BlogPosts() {
   let allBlogs = getBlogPosts()
 
   return (
-    <div className="brutal-border divide-y-2 divide-ink bg-paper">
+    <div className="ink-border divide-y-2 divide-ink bg-paper">
       {allBlogs
         .sort((a, b) => {
           if (

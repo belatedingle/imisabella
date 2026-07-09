@@ -64,7 +64,7 @@ export default async function Blog({ params }) {
     <section className="reading px-4 py-16 md:py-20">
       <a
         href="/"
-        className="mb-8 inline-block font-mono text-xs uppercase tracking-widest text-cobalt underline underline-offset-2"
+        className="mb-8 inline-block font-mono text-xs uppercase tracking-widest text-pink underline underline-offset-2"
       >
         ← isabella.dev
       </a>
