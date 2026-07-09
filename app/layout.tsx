@@ -1,14 +1,14 @@
 import './global.css'
 import type { Metadata } from 'next'
-import { Anton } from 'next/font/google'
+import { JetBrains_Mono } from 'next/font/google'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
 
-const anton = Anton({
-  weight: '400',
+const jetbrainsMono = JetBrains_Mono({
+  weight: ['700', '800'],
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
@@ -62,7 +62,7 @@ export default function RootLayout({
       lang="en"
       className={cx(
         'bg-paper text-ink',
-        anton.variable,
+        jetbrainsMono.variable,
         GeistSans.variable,
         GeistMono.variable
       )}

@@ -64,7 +64,7 @@ export function Hero() {
         >
           <h1
             aria-hidden
-            className="display absolute inset-0 text-[13vw] leading-[0.85] text-pink md:text-[9rem]"
+            className="display absolute inset-0 text-[11vw] leading-[0.95] text-pink md:text-[7rem]"
             style={{
               transform: `translate(${m.x * 14}px, ${m.y * 14}px)`,
               transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)',
@@ -75,7 +75,7 @@ export function Hero() {
             isabella
           </h1>
           <h1
-            className="display relative text-[13vw] leading-[0.85] md:text-[9rem]"
+            className="display relative text-[11vw] leading-[0.95] md:text-[7rem]"
             style={{
               transform: `translate(${m.x * -6}px, ${m.y * -6}px)`,
               transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)',
@@ -83,12 +83,13 @@ export function Hero() {
           >
             hi, i&apos;m
             <br />
-            isabella
+            isabella<span className="caret">_</span>
           </h1>
         </div>
 
-        <p className="mt-8 text-xl text-ink/80 md:text-2xl">
-          software dev. from sydney, australia.
+        <p className="mt-8 font-mono text-lg text-ink/80 md:text-xl">
+          <span className="text-pink">&gt;</span> software dev. from sydney,
+          australia.
         </p>
       </div>
 
