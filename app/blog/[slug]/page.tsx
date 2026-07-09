@@ -52,8 +52,9 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export default async function Blog({ params }) {
+  let { slug } = await params
+  let post = getBlogPosts().find((post) => post.slug === slug)
 
   if (!post) {
     notFound()
@@ -61,6 +62,12 @@ export default function Blog({ params }) {
 
   return (
     <section className="reading px-4 py-16 md:py-20">
+      <a
+        href="/"
+        className="mb-8 inline-block font-mono text-xs uppercase tracking-widest text-cobalt underline underline-offset-2"
+      >
+        ← isabella.dev
+      </a>
       <script
         type="application/ld+json"
         suppressHydrationWarning

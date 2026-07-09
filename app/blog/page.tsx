@@ -8,6 +8,12 @@ export const metadata = {
 export default function Page() {
   return (
     <section className="reading px-4 py-16 md:py-20">
+      <a
+        href="/"
+        className="mb-8 inline-block font-mono text-xs uppercase tracking-widest text-cobalt underline underline-offset-2"
+      >
+        ← isabella.dev
+      </a>
       <p className="mb-3 font-mono text-xs uppercase tracking-widest text-cobalt">
         [ words ]
       </p>

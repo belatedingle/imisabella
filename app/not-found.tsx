@@ -15,7 +15,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="hover-lift brutal-border mt-8 bg-acid px-6 py-3 font-mono text-sm font-bold uppercase tracking-widest"
+        className="hover-lift ink-border mt-8 bg-acid px-6 py-3 font-mono text-sm font-bold uppercase tracking-widest"
       >
         ← back home
       </Link>

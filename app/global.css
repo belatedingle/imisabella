@@ -1,7 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), 'UnifrakturCook', cursive;
+  --font-pixel: var(--font-pixel), ui-monospace, monospace;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   --color-paper: #fdeef4;
@@ -10,6 +11,7 @@
   --color-cobalt: #ff2d8b;
   --color-acid: #ffe14d;
   --color-coral: #ff6b3d;
+  --color-mist: #b3899b;
 }
 
 :root {
@@ -37,49 +39,113 @@ html {
   scroll-behavior: smooth;
   background-color: var(--color-paper);
   color: var(--color-ink);
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewport='0 0 28 28'%3E%3Ctext y='22' font-size='22'%3E%F0%9F%8C%94%3C/text%3E%3C/svg%3E") 4 4, auto;
 }
 
-/* ---------- Brutalist utilities ---------- */
+body {
+  font-size: 15px;
+  line-height: 1.5;
+}
 
-.brutal-border {
+/* Crumpled-paper / halftone texture layered over the paper color */
+.bg-paper-tex {
+  background-color: var(--color-paper);
+  background-image: radial-gradient(
+      rgba(26, 15, 20, 0.06) 1px,
+      transparent 1px
+    ),
+    radial-gradient(rgba(26, 15, 20, 0.04) 1px, transparent 1px);
+  background-size: 6px 6px, 6px 6px;
+  background-position: 0 0, 3px 3px;
+}
+
+/* ---------- Type ---------- */
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-pixel {
+  font-family: var(--font-pixel);
+}
+
+.section-head {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Borders / stickers ---------- */
+
+.ink-border {
   border: 2px solid var(--color-ink);
 }
 
-.brutal-shadow {
-  box-shadow: 6px 6px 0 0 var(--color-ink);
-}
-
-.brutal-shadow-lg {
-  box-shadow: 10px 10px 0 0 var(--color-ink);
-}
-
-.brutal-shadow-blue {
-  box-shadow: 6px 6px 0 0 var(--color-cobalt);
+.ink-shadow {
+  box-shadow: 4px 4px 0 0 var(--color-ink);
 }
 
 .hover-lift {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
-
 .hover-lift:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0 0 var(--color-ink);
+  transform: translate(-2px, -2px) rotate(-0.5deg);
+  box-shadow: 6px 6px 0 0 var(--color-ink);
+  z-index: 5;
 }
-
 .hover-lift:active {
-  transform: translate(2px, 2px);
-  box-shadow: 3px 3px 0 0 var(--color-ink);
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 0 var(--color-ink);
 }
 
-/* Reveal on scroll */
+/* Starburst "NEW!" sticker */
+.starburst {
+  aspect-ratio: 1;
+  background: var(--color-coral);
+  color: var(--color-paper);
+  clip-path: polygon(
+    50% 0%,
+    61% 12%,
+    77% 6%,
+    79% 23%,
+    96% 25%,
+    88% 40%,
+    100% 50%,
+    88% 60%,
+    96% 75%,
+    79% 77%,
+    77% 94%,
+    61% 88%,
+    50% 100%,
+    39% 88%,
+    23% 94%,
+    21% 77%,
+    4% 75%,
+    12% 60%,
+    0% 50%,
+    12% 40%,
+    4% 25%,
+    21% 23%,
+    23% 6%,
+    39% 12%
+  );
+}
+
+/* Dithered / 1-bit image treatment */
+.dither {
+  filter: grayscale(1) contrast(1.35);
+  image-rendering: pixelated;
+  mix-blend-mode: multiply;
+}
+
+/* ---------- Reveal on scroll ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
-
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -96,7 +162,7 @@ html {
   }
 }
 
-/* Marquee */
+/* ---------- Marquee / ticker ---------- */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -105,25 +171,21 @@ html {
     transform: translateX(-50%);
   }
 }
-
 .animate-marquee {
-  animation: marquee 22s linear infinite;
+  animation: marquee 30s linear infinite;
 }
-
 .animate-marquee-slow {
-  animation: marquee 40s linear infinite;
+  animation: marquee 55s linear infinite;
 }
-
 .marquee-reverse {
   animation-direction: reverse;
 }
-
 .group\/marquee:hover .animate-marquee,
 .group\/marquee:hover .animate-marquee-slow {
   animation-play-state: paused;
 }
 
-/* Blink caret */
+/* ---------- Blink caret ---------- */
 @keyframes blink {
   0%,
   49% {
@@ -134,38 +196,25 @@ html {
     opacity: 0;
   }
 }
-
 .animate-blink {
   animation: blink 1s steps(1) infinite;
 }
 
-/* Float */
-@keyframes float {
+/* Flap / wiggle for stickers */
+@keyframes wiggle {
   0%,
   100% {
-    transform: translateY(0) rotate(var(--tw-rotate, 0));
+    transform: rotate(-6deg);
   }
   50% {
-    transform: translateY(-10px) rotate(var(--tw-rotate, 0));
+    transform: rotate(6deg);
   }
 }
-
-.animate-float {
-  animation: float 5s ease-in-out infinite;
+.animate-wiggle {
+  animation: wiggle 2.5s ease-in-out infinite;
 }
 
-/* Grid paper background */
-.bg-grid {
-  background-image: linear-gradient(
-      to right,
-      rgba(20, 17, 15, 0.07) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(20, 17, 15, 0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-/* Reading container for prose pages */
+/* ---------- Reading container for prose pages ---------- */
 .reading {
   max-width: 42rem;
   margin-left: auto;
@@ -173,7 +222,6 @@ html {
 }
 
 /* ---------- Prose (blog) ---------- */
-
 .prose .anchor {
   @apply absolute invisible no-underline;
   margin-left: -1em;
@@ -182,24 +230,20 @@ html {
   max-width: 700px;
   cursor: pointer;
 }
-
 .anchor:hover {
   @apply visible;
 }
-
 .prose a {
-  @apply underline transition-all decoration-neutral-400 underline-offset-2 decoration-[0.1em];
+  @apply underline transition-all underline-offset-2;
+  text-decoration-color: var(--color-cobalt);
 }
-
 .prose .anchor:after {
   @apply text-neutral-300;
   content: '#';
 }
-
 .prose *:hover > .anchor {
   @apply visible;
 }
-
 .prose pre {
   @apply overflow-x-auto py-3 px-4 text-sm;
   background-color: var(--color-ink);
@@ -207,57 +251,50 @@ html {
   border: 2px solid var(--color-ink);
   border-radius: 0;
 }
-
 .prose code {
   @apply px-1 py-0.5 rounded-none;
 }
-
 .prose pre code {
   @apply p-0;
   border: initial;
   line-height: 1.5;
 }
-
 .prose code span {
   @apply font-medium;
 }
-
 .prose img {
   @apply m-0;
 }
-
 .prose p {
   @apply my-4 leading-relaxed;
 }
-
 .prose h1 {
-  @apply text-4xl font-bold tracking-tight mt-6 mb-2;
+  @apply text-4xl tracking-tight mt-6 mb-2;
+  font-family: var(--font-display);
+  font-weight: 400;
 }
-
 .prose h2 {
-  @apply text-2xl font-bold tracking-tight mt-6 mb-2;
+  @apply text-3xl tracking-tight mt-6 mb-2;
+  font-family: var(--font-display);
+  font-weight: 400;
 }
-
 .prose h3 {
-  @apply text-xl font-bold tracking-tight mt-6 mb-2;
+  @apply text-2xl tracking-tight mt-6 mb-2;
+  font-family: var(--font-display);
+  font-weight: 400;
 }
-
 .prose h4 {
   @apply text-lg font-bold tracking-tight mt-6 mb-2;
 }
-
 .prose strong {
   @apply font-bold;
 }
-
 .prose ul {
   @apply list-disc pl-6;
 }
-
 .prose ol {
   @apply list-decimal pl-6;
 }
-
 .prose > :first-child {
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
@@ -266,7 +303,6 @@ html {
 pre::-webkit-scrollbar {
   display: none;
 }
-
 pre {
   -ms-overflow-style: none;
   scrollbar-width: none;
