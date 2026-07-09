@@ -94,6 +94,30 @@ body {
   }
 }
 
+/* CRT scanline overlay for the terminal */
+.crt {
+  position: relative;
+}
+.crt::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  border-radius: inherit;
+}
+@media (prefers-reduced-motion: reduce) {
+  .crt::after {
+    display: none;
+  }
+}
+
 /* ---------- Borders / interaction ---------- */
 
 .ink-border {
