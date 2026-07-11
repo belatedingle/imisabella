@@ -9,20 +9,24 @@ import { Cursor } from './components/cursor'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: {
-    default: 'hi :3',
-    template: '%s | Isabella',
+  applicationName: 'hi :3',
+  title: 'hi :3',
+  description: "hi, i'm isabella - software dev from sydney, australia.",
+  appleWebApp: {
+    title: 'hi :3',
   },
-  description:
-    'Isabella — creative developer, startup founder, and very-online builder working at the edge of web, AI, and design.',
   openGraph: {
-    title: 'Isabella — creative developer',
-    description:
-      'Creative developer, founder, and builder working at the edge of web, AI, and design.',
+    title: 'hi :3',
+    description: "hi, i'm isabella - software dev from sydney, australia.",
     url: baseUrl,
-    siteName: 'Isabella',
+    siteName: 'hi :3',
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'hi :3',
+    description: "hi, i'm isabella - software dev from sydney, australia.",
   },
   robots: {
     index: true,
