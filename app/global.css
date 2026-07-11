@@ -66,9 +66,21 @@ body {
 }
 
 .snap-window {
+  height: 100vh;
   min-height: 100vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+@supports (height: 100dvh) {
+  .snap-shell,
+  .snap-window {
+    height: 100dvh;
+  }
+
+  .snap-window {
+    min-height: 100dvh;
+  }
 }
 
 /* ---------- Type ---------- */
