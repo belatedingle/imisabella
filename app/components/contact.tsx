@@ -65,7 +65,7 @@ function BrandIcon({ name }: { name: SocialIcon }) {
 
 export function Contact() {
   return (
-    <footer id="contact" className="min-w-0">
+    <footer className="w-full min-w-0">
       <div>
         <div className="flex flex-col gap-6">
           <div className="pb-2">

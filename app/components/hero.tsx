@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useState, type CSSProperties, type MouseEvent } from 'react'
 
 const sparkChars = ['*', '+', 'x', 'o', '.', ':', '`', "'"]
 const bursts = [
@@ -131,6 +131,20 @@ function SydneyClock() {
 }
 
 export function Hero() {
+  function scrollToSocials(event: MouseEvent<HTMLAnchorElement>) {
+    const contact = document.querySelector<HTMLElement>('#contact')
+    const shell = document.querySelector<HTMLElement>('.snap-shell')
+
+    if (!contact || !shell) return
+
+    event.preventDefault()
+    shell.scrollTo({
+      top: contact.offsetTop,
+      behavior: 'smooth',
+    })
+    window.history.replaceState(null, '', '#contact')
+  }
+
   return (
     <section className="snap-window relative flex flex-col overflow-hidden bg-black px-5 py-6 md:px-8 md:py-8">
       <AsciiFireworks />
@@ -141,6 +155,7 @@ export function Hero() {
         <nav>
           <a
             href="#contact"
+            onClick={scrollToSocials}
             className="link-sweep font-mono text-xs uppercase tracking-[0.22em] text-[#f5f1f4]/75 hover:text-[#f5f1f4] md:text-sm"
           >
             Socials

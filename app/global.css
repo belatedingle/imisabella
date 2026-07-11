@@ -807,16 +807,6 @@ body {
   z-index: 0;
 }
 
-.ascii-bouncing-balls::before {
-  background-image: linear-gradient(rgba(245, 241, 244, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 45, 139, 0.08) 1px, transparent 1px);
-  background-size: 44px 44px;
-  content: '';
-  inset: 0;
-  opacity: 0.24;
-  position: absolute;
-}
-
 .ascii-ball {
   animation: ascii-ball-bounce var(--ball-duration) linear infinite;
   animation-delay: var(--ball-delay);
