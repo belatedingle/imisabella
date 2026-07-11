@@ -150,7 +150,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 items-center py-16">
         <div>
-          <h1 className="display whitespace-nowrap text-[clamp(2.55rem,11vw,4.5rem)] leading-[0.95] text-[#fff8fb] drop-shadow-[0_0_18px_rgba(255,45,139,0.22)]">
+          <h1 className="hero-title display whitespace-nowrap text-[clamp(2.55rem,11vw,4.5rem)] leading-[0.95] text-[#fff8fb] drop-shadow-[0_0_18px_rgba(255,45,139,0.22)]">
             hi, i&apos;m isabella
           </h1>
           <p className="mt-5 font-mono text-base text-[#f5f1f4]/70 md:text-lg">
