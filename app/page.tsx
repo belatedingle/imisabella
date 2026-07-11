@@ -14,7 +14,7 @@ export default function Page() {
       >
         <AsciiBouncingBalls />
         <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_62%_44%,rgba(0,0,0,0.18),rgba(0,0,0,0.72)_72%)]" />
-        <div className="relative z-10 w-full max-w-md translate-y-3 md:translate-y-5">
+        <div className="relative z-10 w-full max-w-md translate-y-1 md:translate-y-2">
           <Contact />
         </div>
       </section>
