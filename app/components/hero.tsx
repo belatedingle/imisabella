@@ -137,17 +137,6 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_32%_48%,rgba(0,0,0,0.28),rgba(0,0,0,0.86)_68%)]" />
       <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(rgba(245,241,244,0.035)_1px,transparent_1px)] bg-[length:100%_4px]" />
 
-      <header className="relative z-10 flex items-center justify-end">
-        <nav>
-          <a
-            href="#contact"
-            className="link-sweep font-mono text-xs uppercase tracking-[0.22em] text-[#f5f1f4]/75 hover:text-[#f5f1f4] md:text-sm"
-          >
-            Socials
-          </a>
-        </nav>
-      </header>
-
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 items-center py-16">
         <div>
           <h1 className="hero-title display whitespace-nowrap text-[clamp(2.55rem,11vw,4.5rem)] leading-[0.95] text-[#fff8fb] drop-shadow-[0_0_18px_rgba(255,45,139,0.22)]">
