@@ -10,7 +10,7 @@ import { Cursor } from './components/cursor'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Isabella — creative developer',
+    default: 'hi :3',
     template: '%s | Isabella',
   },
   description:
