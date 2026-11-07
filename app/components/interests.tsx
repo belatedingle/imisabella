@@ -1,17 +1,11 @@
 import type { CSSProperties } from 'react'
 
-const center = { id: 'center', label: 'cool stuff im exploring', x: 50, y: 50 }
+const center = { id: 'center', label: '#building', x: 50, y: 50 }
 
 const nodes = [
-  { label: 'app development', x: 15, y: 28, delay: '-0.8s', tone: 'soft' },
-  { label: 'artificial intelligence', x: 50, y: 15, delay: '-1.3s', tone: 'hot' },
-  { label: 'web3', x: 83, y: 22, delay: '-3.1s', tone: 'soft' },
-  { label: 'crypto', x: 86, y: 48, delay: '-4.9s', tone: 'rose' },
-  { label: 'startups', x: 66, y: 62, delay: '-2.2s', tone: 'hot' },
-  { label: 'game development', x: 16, y: 70, delay: '-2.4s', tone: 'rose' },
-  { label: 'music technology', x: 39, y: 74, delay: '-4.2s', tone: 'soft' },
-  { label: 'health & wellness tech', x: 80, y: 86, delay: '-1.9s', tone: 'rose' },
-  { label: 'biohacking', x: 28, y: 88, delay: '-3.6s', tone: 'hot' },
+  { label: 'veyra.now', href: 'https://veyra.now', x: 22, y: 26, delay: '-0.8s', tone: 'soft' },
+  { label: 'thebestloveapp.com', href: 'https://thebestloveapp.com', x: 77, y: 28, delay: '-2.4s', tone: 'hot' },
+  { label: 'more coming soon...', href: undefined, x: 50, y: 79, delay: '-4.2s', tone: 'rose' },
 ]
 
 const drift = [
@@ -69,8 +63,8 @@ export function Interests() {
               } as CSSProperties
             }
           >
-            <span className="label grouped-mind-label glitch-label text-pink" data-text="#collab with me">
-              #collab with me
+            <span className="label grouped-mind-label glitch-label text-pink" data-text="currently">
+              currently
             </span>
             <span className="grouped-mind-title">{center.label}</span>
           </div>
@@ -94,7 +88,18 @@ export function Interests() {
                   } as CSSProperties
                 }
               >
-                {node.label}
+                {node.href ? (
+                  <a
+                    href={node.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-sweep transition-colors hover:text-white focus-visible:text-white"
+                  >
+                    {node.label}
+                  </a>
+                ) : (
+                  node.label
+                )}
               </div>
             )
           })}
